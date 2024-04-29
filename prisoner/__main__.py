@@ -10,6 +10,7 @@ from prisoner.strategies import (
     Triggerable,
     TitForTwoTats,
     Sneaky,
+    Abuser,
 )
 from prisoner.experiment.contest import Contest
 
@@ -31,6 +32,7 @@ def play_contest():
         Triggerable(),
         TitForTwoTats(),
         Sneaky(),
+        Abuser(),
     ]
     contest = Contest(strategies=strategies)
     contest.play_contest()
