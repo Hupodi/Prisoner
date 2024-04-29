@@ -31,7 +31,7 @@ class Match:
         """
         Play a full match between the two strategies
         """
-        for round_number in range(self._rounds_count):
+        for _ in range(self._rounds_count):
             self._play_single_round()
         return self._get_points_per_round()
 
@@ -104,7 +104,8 @@ class Match:
             ]
         )
         fig.update_layout(
-            title_text=f"Match: {self._strategy_1.name} ({self._get_points_per_round()[0]}), {self._strategy_2.name} ({self._get_points_per_round()[1]})",
+            title_text=f"Match: {self._strategy_1.name} ({self._get_points_per_round()[0]}),"
+                       f"{self._strategy_2.name} ({self._get_points_per_round()[1]})",
             xaxis={"title": "Round"},
             yaxis={
                 "title": "",

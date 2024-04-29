@@ -1,3 +1,7 @@
+"""
+Main caller for a Prisonner's Dilemma contest of strategies.
+"""
+
 from prisoner.strategies import (
     Collaborator,
     Defector,

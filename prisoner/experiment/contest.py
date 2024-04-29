@@ -38,7 +38,7 @@ class Contest:
         """
         points_1 = []
         points_2 = []
-        for match_count in range(MATCH_REPLAY_COUNT):
+        for _ in range(MATCH_REPLAY_COUNT):
             round_counts = random.randrange(150, 250)
             match = Match(
                 strategy_1=strategy_1, strategy_2=strategy_2, rounds_count=round_counts
