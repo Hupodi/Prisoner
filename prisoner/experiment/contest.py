@@ -60,5 +60,5 @@ class Contest:
         """
         repr_str = ""
         for strategy, points in zip(self._strategies, self._points):
-            repr_str += f"{strategy.name}: {points}\n"
+            repr_str += f"{strategy.name}: {round(points, 2)}\n"
         return repr_str

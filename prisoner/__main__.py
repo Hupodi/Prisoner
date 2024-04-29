@@ -1,6 +1,4 @@
-from prisoner.strategies import Collaborator
-from prisoner.strategies import Defector
-from prisoner.strategies import RandomChoice
+from prisoner.strategies import Collaborator, Defector, RandomChoice, TitForTat
 from prisoner.experiment.contest import Contest
 
 
@@ -17,6 +15,7 @@ def play_contest():
         RandomChoice(collaborate_probability=0.5),
         RandomChoice(collaborate_probability=0.2),
         RandomChoice(collaborate_probability=0.8),
+        TitForTat(),
     ]
     contest = Contest(strategies=strategies)
     contest.play_contest()
