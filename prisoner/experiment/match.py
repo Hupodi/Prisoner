@@ -83,16 +83,35 @@ class Match:
         x_range = np.arange(1, self._rounds_count + 1)
         fig = go.Figure(
             data=[
-                go.Bar(name=self._strategy_1.name, x=x_range, y=[0.5] * self._rounds_count, marker_color=["lightgreen" if decision is True else "crimson" for decision in self._history[0]]),
-                go.Bar(name=self._strategy_2.name, x=x_range, y=[0.5] * self._rounds_count, marker_color=["lightgreen" if decision is True else "crimson" for decision in self._history[1]]),
+                go.Bar(
+                    name=self._strategy_1.name,
+                    x=x_range,
+                    y=[0.5] * self._rounds_count,
+                    marker_color=[
+                        "lightgreen" if decision is True else "crimson"
+                        for decision in self._history[0]
+                    ],
+                ),
+                go.Bar(
+                    name=self._strategy_2.name,
+                    x=x_range,
+                    y=[0.5] * self._rounds_count,
+                    marker_color=[
+                        "lightgreen" if decision is True else "crimson"
+                        for decision in self._history[1]
+                    ],
+                ),
             ]
         )
         fig.update_layout(
-            title_text=f"Match: {self._strategy_1.name}, {self._strategy_2.name}",
+            title_text=f"Match: {self._strategy_1.name} ({self._get_points_per_round()[0]}), {self._strategy_2.name} ({self._get_points_per_round()[1]})",
             xaxis={"title": "Round"},
-            yaxis={"title": "", "tickvals": [0.25, 0.75], "ticktext": [self._strategy_1.name, self._strategy_2.name]},
+            yaxis={
+                "title": "",
+                "tickvals": [0.25, 0.75],
+                "ticktext": [self._strategy_1.name, self._strategy_2.name],
+            },
             barmode="stack",
             showlegend=False,
         )
-        fig.show()
         return fig

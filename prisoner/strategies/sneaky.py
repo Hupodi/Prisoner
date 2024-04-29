@@ -13,7 +13,7 @@ class Sneaky(Strategy):
         """
         Defects if for the past 2 steps the opponent collaborated.
         """
-        if len(opponent_history) <= 1:
+        if len(opponent_history) <= 2:
             return True
 
         return opponent_history[-2] is False or opponent_history[-1] is False
