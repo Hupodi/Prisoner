@@ -12,6 +12,7 @@ class RandomChoice(Strategy):
         """
         Init: store collaborate_probability
         """
+        super().__init__(f"Random, collaborate Proba = {collaborate_probability}")
         self._collaborate_probability = collaborate_probability
 
     def decide_step(self, self_history: list, opponent_history: list) -> bool:

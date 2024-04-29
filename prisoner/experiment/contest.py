@@ -18,32 +18,47 @@ class Contest:
     """
 
     def __init__(self, strategies: List[Strategy]) -> None:
-        self.strategies = strategies
-        self.points = [0 for _ in range(len(strategies))]
+        self._strategies = strategies
+        self._points = [0 for _ in range(len(strategies))]
 
     def play_contest(self) -> None:
         """
         Play the entire contest
         """
 
-        for strategy_1, strategy_2 in combinations(self.strategies, 2):
+        for strategy_1, strategy_2 in combinations(self._strategies, 2):
+            self.play_match_up(strategy_1, strategy_2)
+        self._normalise_points()
 
-            points_1 = []
-            points_2 = []
-            for match_count in range(MATCH_REPLAY_COUNT):
-                round_counts = random.randrange(150, 250)
-                match = Match(
-                    strategy_1=strategy_1, strategy_2=strategy_2, rounds_count=round_counts
-                )
-                points = match.play_match()
-                points_1.append(points[0])
-                points_2.append(points[1])
+    def play_match_up(self, strategy_1: Strategy, strategy_2: Strategy):
+        """
+        Play a match up between two strategies, repeating the match MATCH_REPLAY_COUNT times
+        """
+        points_1 = []
+        points_2 = []
+        for match_count in range(MATCH_REPLAY_COUNT):
+            round_counts = random.randrange(150, 250)
+            match = Match(
+                strategy_1=strategy_1, strategy_2=strategy_2, rounds_count=round_counts
+            )
+            points = match.play_match()
+            points_1.append(points[0])
+            points_2.append(points[1])
 
-            self.points[self.strategies.index(strategy_1)] += points_1
-            self.points[self.strategies.index(strategy_2)] += points_2
+        self._points[self._strategies.index(strategy_1)] += sum(points_1) / MATCH_REPLAY_COUNT
+        self._points[self._strategies.index(strategy_2)] += sum(points_2) / MATCH_REPLAY_COUNT
 
-    def _get_normalised_points(self):
+    def _normalise_points(self):
         """
         Normalise points for each strategy, dividing by the amount of face-up played (len - 1)
         """
-        self.points = [points / (len(self.strategies) - 1) for points in self.points]
+        self._points = [points / (len(self._strategies) - 1) for points in self._points]
+
+    def __repr__(self):
+        """
+        Represent the contest
+        """
+        repr_str = ""
+        for strategy, points in zip(self._strategies, self._points):
+            repr_str += f"{strategy.name}: {points}\n"
+        return repr_str
