@@ -42,10 +42,10 @@ class Match:
         decision_1 = self._strategy_1.decide_step(
             self_history=self._history[0], opponent_history=self._history[1]
         )
-        self._history[0].append(decision_1)
         decision_2 = self._strategy_2.decide_step(
             self_history=self._history[1], opponent_history=self._history[0]
         )
+        self._history[0].append(decision_1)
         self._history[1].append(decision_2)
 
         self._increment_points(decision_1, decision_2)
