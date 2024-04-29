@@ -2,6 +2,8 @@ from typing import List
 from itertools import combinations
 import random
 
+import numpy as np
+
 from prisoner.strategies.strategy import Strategy
 from prisoner.experiment.match import Match
 
@@ -59,6 +61,7 @@ class Contest:
         Represent the contest
         """
         repr_str = ""
-        for strategy, points in zip(self._strategies, self._points):
-            repr_str += f"{strategy.name}: {round(points, 2)}\n"
+        sorting_index = np.argsort(self._points)
+        for index in reversed(sorting_index):
+            repr_str += f"{self._strategies[index].name}: {round(self._points[index], 2)}\n"
         return repr_str
