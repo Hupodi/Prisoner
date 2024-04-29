@@ -5,6 +5,7 @@ class Collaborator(Strategy):
     """
     Simple strategy that always collaborates
     """
+
     def __init__(self):
         super().__init__("Collaborator")
 

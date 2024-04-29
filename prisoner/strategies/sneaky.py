@@ -5,6 +5,7 @@ class Sneaky(Strategy):
     """
     Strategy that defects if for the past 2 steps the opponent collaborated.
     """
+
     def __init__(self):
         super().__init__("Sneaky")
 

@@ -47,8 +47,12 @@ class Contest:
             points_1.append(points[0])
             points_2.append(points[1])
 
-        self._points[self._strategies.index(strategy_1)] += sum(points_1) / MATCH_REPLAY_COUNT
-        self._points[self._strategies.index(strategy_2)] += sum(points_2) / MATCH_REPLAY_COUNT
+        self._points[self._strategies.index(strategy_1)] += (
+            sum(points_1) / MATCH_REPLAY_COUNT
+        )
+        self._points[self._strategies.index(strategy_2)] += (
+            sum(points_2) / MATCH_REPLAY_COUNT
+        )
 
     def _normalise_points(self):
         """
@@ -63,5 +67,7 @@ class Contest:
         repr_str = ""
         sorting_index = np.argsort(self._points)
         for index in reversed(sorting_index):
-            repr_str += f"{self._strategies[index].name}: {round(self._points[index], 2)}\n"
+            repr_str += (
+                f"{self._strategies[index].name}: {round(self._points[index], 2)}\n"
+            )
         return repr_str

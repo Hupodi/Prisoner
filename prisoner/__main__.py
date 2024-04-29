@@ -1,4 +1,12 @@
-from prisoner.strategies import Collaborator, Defector, RandomChoice, TitForTat, Triggerable, TitForTwoTats, Sneaky
+from prisoner.strategies import (
+    Collaborator,
+    Defector,
+    RandomChoice,
+    TitForTat,
+    Triggerable,
+    TitForTwoTats,
+    Sneaky,
+)
 from prisoner.experiment.contest import Contest
 
 

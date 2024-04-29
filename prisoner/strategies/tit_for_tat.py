@@ -5,6 +5,7 @@ class TitForTat(Strategy):
     """
     Simple strategy that plays what the opponent just played.
     """
+
     def __init__(self):
         super().__init__("Tit for Tat")
 

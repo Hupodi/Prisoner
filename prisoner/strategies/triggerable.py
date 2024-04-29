@@ -5,6 +5,7 @@ class Triggerable(Strategy):
     """
     Strategy that collaborates but after a single defection from the opponent, it will keep defecting as a reaction.
     """
+
     def __init__(self):
         super().__init__("Triggerable")
 

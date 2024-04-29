@@ -5,6 +5,7 @@ class Strategy(ABC):
     """
     Abstract base class representing a strategy
     """
+
     def __init__(self, name: str) -> None:
         """
         Add strategy name

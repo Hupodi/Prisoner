@@ -5,6 +5,7 @@ class Defector(Strategy):
     """
     Simple strategy that always defects
     """
+
     def __init__(self):
         super().__init__("Defector")
 
